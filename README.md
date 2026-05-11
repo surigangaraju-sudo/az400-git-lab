@@ -1,1 +1,1 @@
-# AZ400-Git-Lab
+# AZ400 Git Practice
