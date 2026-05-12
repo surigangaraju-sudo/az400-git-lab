@@ -2,12 +2,24 @@ trigger:
 - main
 
 pool:
-  vmImage: windows-latest
+  vmImage: ubuntu-latest
+
 steps:
-- script: echo "Hello from Azure Pipeline"
-  displayName: 'Run Hello Script'
+- script: echo "Starting CI Pipeline"
+  displayName: 'Start Message'
 
 - script: |
-    echo "Agent Information"
+    echo "Build running on:"
     uname -a
-  displayName: 'Display Agent Info'
+  displayName: 'Display Agent Information'
+
+- script: |
+    mkdir output
+    echo "AZ-400 CI Practice" > output/build.txt
+  displayName: 'Generate Build Output'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'output'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
