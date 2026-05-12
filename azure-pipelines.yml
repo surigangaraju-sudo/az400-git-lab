@@ -1,0 +1,14 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo "Hello from Azure Pipeline"
+  displayName: 'Run Hello Script'
+
+- script: |
+    echo "Agent Information"
+    uname -a
+  displayName: 'Display Agent Info'
